@@ -1,0 +1,5 @@
+server:
+  port: 12102
+spring:
+  application:
+    name: portal-auth

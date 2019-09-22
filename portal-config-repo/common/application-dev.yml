@@ -1,0 +1,22 @@
+eureka:
+  client:
+    service-url:
+     defaultZone: http://localhost:12100/eureka/
+  instance:
+    prefer-ip-address: true
+spring:
+  redis:
+    host: 192.168.176.129
+    port: 6379
+    database: 1
+  datasource:
+      url: jdbc:mysql://192.168.176.129:3306/portal?characterEncoding=utf-8&useSSL=false
+      username: root
+      password: 111111
+      max-lifetime: 2000
+      driver-class-name: com.mysql.jdbc.Driver
+auth:
+  token:
+    header: Authorization
+    secret: ecarx2019
+    expire: 300000

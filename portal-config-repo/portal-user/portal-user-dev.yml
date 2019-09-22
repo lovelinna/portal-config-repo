@@ -1,0 +1,6 @@
+server:
+  port: 12103
+spring:
+  application:
+    name: portal-user
+debug: true

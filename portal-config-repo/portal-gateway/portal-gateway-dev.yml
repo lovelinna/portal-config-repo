@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: portal-gateway
+  cloud:
+    gateway:
+      default-filters:
+        - name: RequestRateLimiter
+          args:
+            key-resolver: '#{@remoteAddrKeyResolver}'
+            redis-rate-limiter.replenishRate: 1
+            redis-rate-limiter.burstCapacity: 5
+      routes:
+        - id: auth-service
+          uri: lb://portal-auth
+          predicates:
+          - Path=/auth/**
+        - id: user-register
+          uri: lb://portal-user
+          predicates:
+          - Path=/user/register
+        - id: user-service
+          uri: lb://portal-user
+          predicates:
+          - Path=/user/**
+          filters:
+          - Authorize=true
+feign:
+  hystrix:
+    enabled: true
